@@ -11,7 +11,7 @@ Stripe is integrated, and you need to configure the webhook destination to point
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/Nithish9652/ParkandRide.git
+git clone https://github.com/Anuj344/Park-and-Ride.git
 cd ParkandRide
 
 ```
@@ -114,3 +114,4 @@ project-root/
 - **Backend**: Python 3.8+, Uvicorn, FastAPI  
 - **Frontend**: Node.js 18+, npm  
 - **Payments**: Stripe CLI for webhook testing  
+
