@@ -1,0 +1,108 @@
+.container {
+  min-height: 100vh;
+  padding: 2rem;
+  background: #f9fafb;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero {
+  text-align: center;
+  max-width: 800px;
+  margin-bottom: 3rem;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+.actions {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.button {
+  padding: 0.8rem 1.6rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.loginBtn {
+  background-color: #0070f3;
+  color: white;
+}
+.loginBtn:hover {
+  background-color: #0059c1;
+}
+
+.signupBtn {
+  background-color: #10b981;
+  color: white;
+}
+.signupBtn:hover {
+  background-color: #0b8e63;
+}
+
+.section {
+  background: white;
+  padding: 2rem;
+  margin: 1rem 0;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  max-width: 800px;
+  width: 100%;
+  text-align: center;
+}
+
+.sectionTitle {
+  font-size: 1.8rem;
+  margin-bottom: 1.2rem;
+  color: #111827;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  color: #4b5563;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+.list li {
+  margin-bottom: 0.8rem;
+}
+
+.steps {
+  list-style: decimal;
+  text-align: left;
+  color: #4b5563;
+  font-size: 1.1rem;
+  margin: 0 auto;
+  padding-left: 1.5rem;
+  line-height: 1.6;
+}
+.dashboardBtn {
+  background-color: #6b7280; /* Neutral gray */
+  color: white;
+}
+.dashboardBtn:hover {
+  background-color: #4b5563;
+}

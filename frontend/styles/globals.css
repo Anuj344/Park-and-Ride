@@ -1,0 +1,122 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap");
+
+:root {
+  --primary: #0070f3;
+  --info: #2196f3;
+  --danger: #f44336;
+  --logout: #e53935;
+  --bg: #f9fafb;
+  --text: #333;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  font-family: "Inter", sans-serif;
+  color: var(--text);
+}
+
+.container {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.8rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease;
+}
+.card:hover {
+  transform: translateY(-2px);
+}
+.link-card {
+  text-align: center;
+}
+
+label {
+  display: block;
+  margin: 1rem 0 0.5rem;
+  font-weight: 600;
+}
+
+input[type="text"],
+input[type="datetime-local"],
+input[type="number"] {
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(0, 112, 243, 0.2);
+  outline: none;
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform 0.2s ease, background 0.2s ease;
+  margin-top: 1rem;
+}
+.btn:hover {
+  transform: scale(1.05);
+}
+.btn.primary {
+  background: var(--primary);
+  color: #fff;
+}
+.btn.info {
+  background: var(--info);
+  color: #fff;
+}
+.btn.danger {
+  background: var(--danger);
+  color: #fff;
+}
+.btn.logout {
+  background: var(--logout);
+  color: #fff;
+}
+
+.booking-form .action-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.estimated-cost {
+  font-size: 1.1rem;
+  color: var(--primary);
+}
+
+.message.error {
+  background: #ffebee;
+  border: 1px solid var(--danger);
+  color: #b71c1c;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 1rem;
+}
+
+.center {
+  text-align: center;
+  margin-top: 1rem;
+}
