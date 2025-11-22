@@ -17,7 +17,9 @@ from dotenv import load_dotenv
 load_dotenv()
 stripe.api_key = os.getenv("STRIPE_SECRET_KEY")
 WEBHOOK_SECRET = os.getenv("STRIPE_WEBHOOK_SECRET")
-BASE_URL = os.getenv("BASE_URL", "http://localhost:3000")
+
+# IMPORTANT: updated BASE_URL so no localhost redirects
+BASE_URL = os.getenv("BASE_URL", "https://park-and-ride-y2oa.vercel.app")
 
 # Router setup
 router = APIRouter(
@@ -25,24 +27,18 @@ router = APIRouter(
     tags=["Subscriptions"],
 )
 
-# Request and response models
 class SessionIn(BaseModel):
     plate: constr(strip_whitespace=True, min_length=1)
 
 class SessionOut(BaseModel):
     sessionId: str
 
-# Create Checkout Session
 @router.post(
     "/create-checkout-session",
     response_model=SessionOut,
     summary="Create Checkout Session",
 )
 async def create_checkout_session(body: SessionIn):
-    """
-    Creates a Stripe Checkout Session for the given plate.
-    Checks if the user is already subscribed.
-    """
     plate = body.plate.strip().upper()
     logging.info("Creating checkout session for %s", plate)
 
@@ -74,15 +70,12 @@ async def create_checkout_session(body: SessionIn):
         logging.exception("Stripe session creation failed")
         raise HTTPException(status_code=500, detail="Stripe session failed")
 
-# Stripe Webhook Handler
+
 @router.post("/webhook", include_in_schema=False)
 async def webhook(
     request: Request,
     stripe_signature: str = Header(alias="Stripe-Signature"),
 ):
-    """
-    Stripe webhook endpoint. Upserts subscriber on checkout.session.completed.
-    """
     payload = await request.body()
 
     try:
@@ -95,7 +88,7 @@ async def webhook(
         logging.error("❌ Invalid webhook signature: %s", e)
         raise HTTPException(status_code=400, detail="Invalid webhook signature")
 
-    logging.info("✅ Received Stripe event %s", event["type"])
+    logging.info("Received Stripe event %s", event["type"])
 
     if event["type"] == "checkout.session.completed":
         session = event["data"]["object"]
@@ -112,6 +105,6 @@ async def webhook(
                 }},
                 upsert=True,
             )
-            logging.info("✅ Upserted subscriber %s", plate)
+            logging.info("Upserted subscriber %s", plate)
 
     return JSONResponse(content={"received": True})
